@@ -10,4 +10,9 @@ $(document).on('click', '.newUserSubmit', function(event) {
   };
 
   console.log(newUser);
+
+  $.post('/api/new', newUser)
+    .done(function() {
+      alert('User Added');
+    })
 });
