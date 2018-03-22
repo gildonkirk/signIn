@@ -16,3 +16,20 @@ $(document).on('click', '.newUserSubmit', function(event) {
       alert('User Added');
     })
 });
+
+$(document).on('click', '.loginSubmit', function(event) {
+  event.preventDefault();
+  let userEmail = $('.userEmail').val().trim();
+  let userName = $('.userName').val().trim();
+  let userAge = parseInt($('.userAge').val().trim());
+
+  $.get('/api/all', function(data) {
+    for(i = 0; i < data.length; i++) {
+      if(userEmail === data[i].email && userName === data[i].name && userAge === data[i].age) {
+        alert('Successful Login!')
+      } else {
+        alert('Unsuccessful Login!')
+      }
+    }
+  });
+});
